@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% if ticker %}
+	{{ ticker }}
+{% endif %}
+
+{% if api %}
+	{% if api == "Error..." %}
+		Löyty ongelma hakemasi nimesi kanssa,
+		ole ystävällinen ja kokeile uudestaa.
+	{% else %}
+
+		<h1>{{ api.companyName }}</h1><br/>
+		Hinta: ${{ api.latestPrice }}<br/>
+		Edellinen sulkeutuminen: ${{ api.previousClose }}<br/>
+		Markkina-arvo: {{ api.marketCap }}<br/>
+		Muutos vuoden alusta tähän päivään: {{ api.ytdChange }}<br/>
+		52 viikon korkein: ${{ api.week52High }}<br/>
+		52 viikon matalin: ${{ api.week52Low }}<br/>
+
+		
+	{% endif %}
+
+{% endif %}
+
+{% endblock %}
